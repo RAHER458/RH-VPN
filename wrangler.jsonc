@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rh-vpn",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-10",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rh-vpn-db",
+      "database_id": "394129a8-b23d-420e-b106-b7d1911c38f0",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
