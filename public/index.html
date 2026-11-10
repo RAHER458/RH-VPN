@@ -1,71 +1,36 @@
 <!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090d19">
-  <meta name="description" content="RH VPN — приватная панель управления VPN-подписками.">
-  <title>RH VPN — Панель управления</title>
-  <style>
-    :root{color-scheme:dark;--bg:#080b14;--panel:#101626;--panel2:#151e31;--line:#25314a;--muted:#8e9bb4;--text:#f3f6ff;--blue:#5275ff;--purple:#9657ff;--green:#48d6a0}
-    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,rgba(70,91,210,.2),transparent 36%),radial-gradient(ellipse at 90% 18%,rgba(137,65,210,.14),transparent 30%),var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    button,input{font:inherit}button{cursor:pointer}.shell{width:min(1120px,100%);margin:auto;padding:24px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:54px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 8px 30px #536bff55;font-size:17px}.status{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:12px}.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e7b65b;margin-right:7px}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;min-height:440px}.eyebrow{color:#9caeff;text-transform:uppercase;letter-spacing:.17em;font-size:11px;font-weight:800}.hero h1{font-size:clamp(38px,6vw,66px);line-height:1.03;letter-spacing:-.045em;margin:15px 0 18px}.gradient{background:linear-gradient(100deg,#7895ff,#bd83ff);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{color:var(--muted);max-width:510px;font-size:16px}.features{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.chip{border:1px solid var(--line);background:#111827aa;border-radius:999px;padding:8px 12px;color:#c5cee0;font-size:12px}
-    .login{background:linear-gradient(160deg,#151e31,#0e1422);border:1px solid #2a3652;border-radius:24px;padding:28px;box-shadow:0 24px 80px #0007;max-width:420px;width:100%;justify-self:end}.login h2{margin:0 0 6px;font-size:22px}.sub{margin:0 0 24px;color:var(--muted);font-size:13px}.field-label{display:block;color:#c5cee0;font-size:12px;margin:15px 0 7px}.field{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:12px;background:#0b1120;color:var(--text);outline:none}.field:focus{border-color:#6682ff;box-shadow:0 0 0 3px #5275ff22}.primary{width:100%;border:0;border-radius:12px;padding:14px 18px;margin-top:20px;color:white;font-weight:750;background:linear-gradient(100deg,var(--blue),var(--purple));box-shadow:0 8px 24px #5b69ff33}.primary:disabled{opacity:.6;cursor:not-allowed}.hint{font-size:11px;color:#8290aa;margin:14px 0 0;text-align:center}.preview{margin-top:55px;border-top:1px solid #202a40;padding-top:26px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.preview h3{font-size:15px;margin:0}.preview-tag{font-size:11px;color:#e7bd70;background:#4a351a66;border:1px solid #6b512c;border-radius:999px;padding:5px 9px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat{background:#101727bb;border:1px solid var(--line);border-radius:16px;padding:17px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:24px;margin-top:7px}.lower{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.tile{background:#101727bb;border:1px solid var(--line);border-radius:16px;padding:18px}.tile h4{margin:0 0 8px;font-size:13px}.tile p{margin:0;color:var(--muted);font-size:12px}.duration{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.duration span{padding:7px 10px;border:1px solid var(--line);border-radius:9px;color:#c8d1e5;font-size:11px}.footer{text-align:center;color:#65728c;font-size:11px;padding:40px 0 12px}
-    @media(max-width:760px){.shell{padding:18px}.top{margin-bottom:35px}.hero{grid-template-columns:1fr;gap:28px;min-height:0}.hero h1{font-size:46px}.login{justify-self:stretch;max-width:none}.preview{margin-top:40px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.lower{grid-template-columns:1fr}.status{font-size:10px}.footer{padding-top:30px}}
-    @media(max-width:380px){.hero h1{font-size:39px}.login{padding:21px}.stats{gap:9px}.stat{padding:13px}}
-  </style>
-</head>
-<body>
-  <main class="shell">
-    <header class="top">
-      <div class="brand"><div class="logo">RH</div><span>RH VPN</span></div>
-      <div class="status"><i></i>Сервис настраивается</div>
-    </header>
-    <section class="hero">
-      <div>
-        <div class="eyebrow">Private access · Simple control</div>
-        <h1>Твой VPN.<br><span class="gradient">Твои правила.</span></h1>
-        <p class="lead">Закрытая панель для создания и управления VPN-подписками. Выдавай доступ на нужный срок, следи за активными ссылками и управляй ими в одном месте.</p>
-        <div class="features"><span class="chip">01 · Личный доступ</span><span class="chip">02 · Сроки подписок</span><span class="chip">03 · Управление ссылками</span></div>
-      </div>
-      <section class="login" aria-labelledby="login-title">
-        <div class="eyebrow">Admin access</div>
-        <h2 id="login-title">Вход в панель</h2>
-        <p class="sub">Панель предназначена только для администратора RH VPN.</p>
-        <form id="login-form">
-          <label class="field-label" for="admin-login">Логин</label>
-          <input class="field" id="admin-login" name="login" autocomplete="username" placeholder="Введите логин" disabled>
-          <label class="field-label" for="admin-password">Пароль</label>
-          <input class="field" id="admin-password" name="password" type="password" autocomplete="current-password" placeholder="Введите пароль" disabled>
-          <button class="primary" type="button" disabled>Скоро будет доступно</button>
-        </form>
-        <p class="hint">Авторизация подключается на следующем этапе.</p>
-      </section>
-    </section>
-    <section class="preview">
-      <div class="preview-head"><h3>Что будет в панели управления</h3><span class="preview-tag">Предпросмотр</span></div>
-      <div class="stats">
-        <div class="stat"><small>Активные подписки</small><strong>—</strong></div>
-        <div class="stat"><small>Истекшие подписки</small><strong>—</strong></div>
-        <div class="stat"><small>Всего создано</small><strong>—</strong></div>
-      </div>
-      <div class="lower">
-        <div class="tile"><h4>Создание подписки</h4><p>Выбор срока действия и сервера, генерация уникальной ссылки для импорта в Happ.</p><div class="duration" aria-label="Примеры произвольного срока"><span>5 мин 30 сек</span><span>4 дня</span><span>2 дня 6 ч</span><span>30 секунд</span></div>
-          <div class="custom-time" style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
-            <h4 style="margin:0 0 10px;font-size:13px">Произвольный срок подписки</h4>
-            <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
-              <label style="font-size:11px;color:var(--muted)">Дни<input class="field" type="number" min="0" step="1" value="0" disabled></label>
-              <label style="font-size:11px;color:var(--muted)">Часы<input class="field" type="number" min="0" max="23" step="1" value="0" disabled></label>
-              <label style="font-size:11px;color:var(--muted)">Минуты<input class="field" type="number" min="0" max="59" step="1" value="5" disabled></label>
-              <label style="font-size:11px;color:var(--muted)">Секунды<input class="field" type="number" min="0" max="59" step="1" value="30" disabled></label>
-            </div>
-            <p style="margin:10px 0 0;color:var(--muted);font-size:11px">Поля станут доступны после подключения защищённой панели и серверной проверки срока.</p>
-          </div></div>
-        <div class="tile"><h4>Управление доступом</h4><p>Просмотр подписок, копирование ссылок, продление срока и отзыв доступа.</p></div>
-      </div>
-    </section>
-    <footer class="footer">RH VPN · Private administration</footer>
-  </main>
-</body>
-</html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080b14"><title>RH VPN — Генератор</title>
+<style>
+:root{color-scheme:dark;--bg:#080b14;--panel:#111a2b;--line:#293653;--muted:#91a0ba;--text:#f3f6ff;--blue:#5275ff;--purple:#9657ff;--green:#45d6a0;--red:#ff7185}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,#465bd233,transparent 38%),radial-gradient(ellipse at 90% 15%,#8941d222,transparent 32%),var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:900px;margin:auto;padding:24px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px}.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.08em}.logo{display:grid;place-items:center;width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 8px 30px #536bff55}.status{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:7px 12px;border-radius:99px}.hero{margin-bottom:25px}.eyebrow{font-size:11px;color:#9caeff;letter-spacing:.16em;text-transform:uppercase;font-weight:800}.hero h1{font-size:clamp(34px,7vw,52px);line-height:1.05;margin:10px 0}.grad{background:linear-gradient(100deg,#7895ff,#bd83ff);color:transparent;background-clip:text}.muted{color:var(--muted)}.panel{background:linear-gradient(160deg,#151e31,#0e1422);border:1px solid var(--line);border-radius:22px;padding:23px;margin:18px 0;box-shadow:0 18px 60px #0004}.panel h2{font-size:19px;margin:0 0 5px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field input{width:100%;padding:13px 11px;background:#0b1120;border:1px solid var(--line);border-radius:11px;color:var(--text);font:inherit;outline:none}.field input:focus{border-color:var(--blue)}.label{margin-top:12px}.btn{border:0;border-radius:12px;padding:13px 17px;font:inherit;font-weight:750;color:white;background:linear-gradient(100deg,var(--blue),var(--purple));cursor:pointer}.btn:disabled{opacity:.55}.btn.secondary{background:#202b43;border:1px solid var(--line)}.btn.danger{background:#542333;border:1px solid #874153;padding:8px 11px;font-size:12px}.full{width:100%;margin-top:8px}.note{font-size:12px;color:var(--muted);margin:12px 0 0}.result{display:none;margin-top:16px;padding:14px;border-radius:13px;border:1px solid #3d745f;background:#123326}.token{overflow-wrap:anywhere;font-family:ui-monospace,monospace;font-size:12px;margin:9px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.item{padding:15px 0;border-top:1px solid var(--line)}.item:first-child{border-top:0}.item small{display:block;color:var(--muted)}.pill{font-size:11px;padding:4px 8px;border-radius:99px;background:#26334c;color:#cbd6ef}.pill.active{background:#164532;color:#8ef0c1}.pill.expired,.pill.revoked{background:#452332;color:#ff9caf}.error{color:#ff9caf;font-size:13px;margin-top:10px}.empty{color:var(--muted);font-size:13px;padding:15px 0}.foot{text-align:center;color:#64718a;font-size:11px;padding:25px}
+@media(max-width:520px){.wrap{padding:17px}.panel{padding:18px}.grid{gap:7px}.field input{padding:12px 7px;font-size:14px}.row{align-items:flex-start}.top{margin-bottom:27px}}
+</style></head><body><main class="wrap">
+<header class="top"><div class="brand"><div class="logo">RH</div>RH VPN</div><div class="status" id="status">Подключение…</div></header>
+<section class="hero"><div class="eyebrow">Personal VPN tools</div><h1>Твой VPN.<br><span class="grad">Твои правила.</span></h1><div class="muted">Генератор и управление сроками доступа.</div></section>
+<section class="panel"><h2>Создать доступ</h2><div class="muted" style="font-size:13px">Укажи любой срок — можно комбинировать дни, часы, минуты и секунды.</div>
+<div class="grid">
+<div class="field"><label for="days">Дни</label><input id="days" type="number" min="0" step="1" value="0"></div>
+<div class="field"><label for="hours">Часы</label><input id="hours" type="number" min="0" step="1" value="0"></div>
+<div class="field"><label for="minutes">Минуты</label><input id="minutes" type="number" min="0" step="1" value="5"></div>
+<div class="field"><label for="seconds">Секунды</label><input id="seconds" type="number" min="0" step="1" value="30"></div>
+</div>
+<div class="field label"><label for="label">Название (необязательно)</label><input id="label" type="text" maxlength="80" placeholder="Например, телефон или друг"></div>
+<button class="btn full" id="create">Создать</button><div class="error" id="error"></div>
+<div class="result" id="result"><b>Запись создана</b><div class="token" id="token"></div><button class="btn secondary" id="copy">Копировать токен</button><p class="note" id="warning"></p></div>
+</section>
+<section class="panel"><div class="row"><div><h2>Мои записи</h2><div class="muted" style="font-size:12px">Последние 200 созданных записей</div></div><button class="btn secondary" id="refresh">Обновить</button></div><div id="list" class="empty">Загрузка…</div></section>
+<div class="foot">RH VPN · Личный инструмент</div></main>
+<script>
+const $=id=>document.getElementById(id);
+let lastToken="";
+function date(ts){return new Date(ts*1000).toLocaleString("ru-RU")}
+async function api(path,options={}){const r=await fetch(path,{...options,headers:{"content-type":"application/json",...(options.headers||{})}});let d={};try{d=await r.json()}catch{}if(!r.ok)throw new Error(d.error||"Ошибка запроса");return d}
+async function load(){try{const d=await api("/api/subscriptions");$("status").textContent="База подключена";if(!d.subscriptions.length){$("list").innerHTML='<div class="empty">Пока ничего не создано.</div>';return}
+$("list").innerHTML=d.subscriptions.map(x=>'<div class="item"><div class="row"><div><b>'+escapeHtml(x.label||"Без названия")+'</b><small>Создано: '+date(x.created_at)+'</small><small>Истекает: '+date(x.expires_at)+'</small></div><div style="text-align:right"><span class="pill '+x.status+'">'+({active:"Активна",expired:"Истекла",revoked:"Отозвана"}[x.status])+'</span>'+(x.status==="active"?' <button class="btn danger" data-revoke="'+x.id+'">Отозвать</button>':"")+'</div></div></div>').join("");
+document.querySelectorAll("[data-revoke]").forEach(b=>b.addEventListener("click",async()=>{if(!confirm("Отозвать этот доступ?"))return;try{await api("/api/subscriptions/"+b.dataset.revoke+"/revoke",{method:"POST",body:"{}"});await load()}catch(e){alert(e.message)}}))
+}catch(e){$("status").textContent="Ошибка подключения";$("list").textContent=e.message}}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("create").addEventListener("click",async()=>{const btn=$("create");$("error").textContent="";$("result").style.display="none";const values=["days","hours","minutes","seconds"].map(k=>Number($(k).value));if(values.some(v=>!Number.isSafeInteger(v)||v<0)){ $("error").textContent="Введи целые неотрицательные значения.";return}btn.disabled=true;btn.textContent="Создаю…";try{const d=await api("/api/subscriptions",{method:"POST",body:JSON.stringify({days:values[0],hours:values[1],minutes:values[2],seconds:values[3],label:$("label").value})});lastToken=d.token;$("token").textContent=lastToken;$("warning").textContent=d.message;$("result").style.display="block";await load()}catch(e){$("error").textContent=e.message}finally{btn.disabled=false;btn.textContent="Создать"}});
+$("copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(lastToken);$("copy").textContent="Скопировано"}catch{$("copy").textContent="Не удалось скопировать"}});
+$("refresh").addEventListener("click",load);load();
+</script></body></html>
