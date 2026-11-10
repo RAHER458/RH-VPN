@@ -51,7 +51,17 @@
         <div class="stat"><small>Всего создано</small><strong>—</strong></div>
       </div>
       <div class="lower">
-        <div class="tile"><h4>Создание подписки</h4><p>Выбор срока действия и сервера, генерация уникальной ссылки для импорта в Happ.</p><div class="duration"><span>1 день</span><span>3 дня</span><span>7 дней</span><span>30 дней</span></div></div>
+        <div class="tile"><h4>Создание подписки</h4><p>Выбор срока действия и сервера, генерация уникальной ссылки для импорта в Happ.</p><div class="duration" aria-label="Примеры произвольного срока"><span>5 мин 30 сек</span><span>4 дня</span><span>2 дня 6 ч</span><span>30 секунд</span></div>
+          <div class="custom-time" style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
+            <h4 style="margin:0 0 10px;font-size:13px">Произвольный срок подписки</h4>
+            <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+              <label style="font-size:11px;color:var(--muted)">Дни<input class="field" type="number" min="0" step="1" value="0" disabled></label>
+              <label style="font-size:11px;color:var(--muted)">Часы<input class="field" type="number" min="0" max="23" step="1" value="0" disabled></label>
+              <label style="font-size:11px;color:var(--muted)">Минуты<input class="field" type="number" min="0" max="59" step="1" value="5" disabled></label>
+              <label style="font-size:11px;color:var(--muted)">Секунды<input class="field" type="number" min="0" max="59" step="1" value="30" disabled></label>
+            </div>
+            <p style="margin:10px 0 0;color:var(--muted);font-size:11px">Поля станут доступны после подключения защищённой панели и серверной проверки срока.</p>
+          </div></div>
         <div class="tile"><h4>Управление доступом</h4><p>Просмотр подписок, копирование ссылок, продление срока и отзыв доступа.</p></div>
       </div>
     </section>
