@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d19">
+  <meta name="description" content="RH VPN — приватная панель управления VPN-подписками.">
+  <title>RH VPN — Панель управления</title>
+  <style>
+    :root{color-scheme:dark;--bg:#080b14;--panel:#101626;--panel2:#151e31;--line:#25314a;--muted:#8e9bb4;--text:#f3f6ff;--blue:#5275ff;--purple:#9657ff;--green:#48d6a0}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,rgba(70,91,210,.2),transparent 36%),radial-gradient(ellipse at 90% 18%,rgba(137,65,210,.14),transparent 30%),var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    button,input{font:inherit}button{cursor:pointer}.shell{width:min(1120px,100%);margin:auto;padding:24px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:54px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 8px 30px #536bff55;font-size:17px}.status{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:12px}.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e7b65b;margin-right:7px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;min-height:440px}.eyebrow{color:#9caeff;text-transform:uppercase;letter-spacing:.17em;font-size:11px;font-weight:800}.hero h1{font-size:clamp(38px,6vw,66px);line-height:1.03;letter-spacing:-.045em;margin:15px 0 18px}.gradient{background:linear-gradient(100deg,#7895ff,#bd83ff);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{color:var(--muted);max-width:510px;font-size:16px}.features{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.chip{border:1px solid var(--line);background:#111827aa;border-radius:999px;padding:8px 12px;color:#c5cee0;font-size:12px}
+    .login{background:linear-gradient(160deg,#151e31,#0e1422);border:1px solid #2a3652;border-radius:24px;padding:28px;box-shadow:0 24px 80px #0007;max-width:420px;width:100%;justify-self:end}.login h2{margin:0 0 6px;font-size:22px}.sub{margin:0 0 24px;color:var(--muted);font-size:13px}.field-label{display:block;color:#c5cee0;font-size:12px;margin:15px 0 7px}.field{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:12px;background:#0b1120;color:var(--text);outline:none}.field:focus{border-color:#6682ff;box-shadow:0 0 0 3px #5275ff22}.primary{width:100%;border:0;border-radius:12px;padding:14px 18px;margin-top:20px;color:white;font-weight:750;background:linear-gradient(100deg,var(--blue),var(--purple));box-shadow:0 8px 24px #5b69ff33}.primary:disabled{opacity:.6;cursor:not-allowed}.hint{font-size:11px;color:#8290aa;margin:14px 0 0;text-align:center}.preview{margin-top:55px;border-top:1px solid #202a40;padding-top:26px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.preview h3{font-size:15px;margin:0}.preview-tag{font-size:11px;color:#e7bd70;background:#4a351a66;border:1px solid #6b512c;border-radius:999px;padding:5px 9px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat{background:#101727bb;border:1px solid var(--line);border-radius:16px;padding:17px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:24px;margin-top:7px}.lower{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.tile{background:#101727bb;border:1px solid var(--line);border-radius:16px;padding:18px}.tile h4{margin:0 0 8px;font-size:13px}.tile p{margin:0;color:var(--muted);font-size:12px}.duration{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.duration span{padding:7px 10px;border:1px solid var(--line);border-radius:9px;color:#c8d1e5;font-size:11px}.footer{text-align:center;color:#65728c;font-size:11px;padding:40px 0 12px}
+    @media(max-width:760px){.shell{padding:18px}.top{margin-bottom:35px}.hero{grid-template-columns:1fr;gap:28px;min-height:0}.hero h1{font-size:46px}.login{justify-self:stretch;max-width:none}.preview{margin-top:40px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.lower{grid-template-columns:1fr}.status{font-size:10px}.footer{padding-top:30px}}
+    @media(max-width:380px){.hero h1{font-size:39px}.login{padding:21px}.stats{gap:9px}.stat{padding:13px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand"><div class="logo">RH</div><span>RH VPN</span></div>
+      <div class="status"><i></i>Сервис настраивается</div>
+    </header>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Private access · Simple control</div>
+        <h1>Твой VPN.<br><span class="gradient">Твои правила.</span></h1>
+        <p class="lead">Закрытая панель для создания и управления VPN-подписками. Выдавай доступ на нужный срок, следи за активными ссылками и управляй ими в одном месте.</p>
+        <div class="features"><span class="chip">01 · Личный доступ</span><span class="chip">02 · Сроки подписок</span><span class="chip">03 · Управление ссылками</span></div>
+      </div>
+      <section class="login" aria-labelledby="login-title">
+        <div class="eyebrow">Admin access</div>
+        <h2 id="login-title">Вход в панель</h2>
+        <p class="sub">Панель предназначена только для администратора RH VPN.</p>
+        <form id="login-form">
+          <label class="field-label" for="admin-login">Логин</label>
+          <input class="field" id="admin-login" name="login" autocomplete="username" placeholder="Введите логин" disabled>
+          <label class="field-label" for="admin-password">Пароль</label>
+          <input class="field" id="admin-password" name="password" type="password" autocomplete="current-password" placeholder="Введите пароль" disabled>
+          <button class="primary" type="button" disabled>Скоро будет доступно</button>
+        </form>
+        <p class="hint">Авторизация подключается на следующем этапе.</p>
+      </section>
+    </section>
+    <section class="preview">
+      <div class="preview-head"><h3>Что будет в панели управления</h3><span class="preview-tag">Предпросмотр</span></div>
+      <div class="stats">
+        <div class="stat"><small>Активные подписки</small><strong>—</strong></div>
+        <div class="stat"><small>Истекшие подписки</small><strong>—</strong></div>
+        <div class="stat"><small>Всего создано</small><strong>—</strong></div>
+      </div>
+      <div class="lower">
+        <div class="tile"><h4>Создание подписки</h4><p>Выбор срока действия и сервера, генерация уникальной ссылки для импорта в Happ.</p><div class="duration"><span>1 день</span><span>3 дня</span><span>7 дней</span><span>30 дней</span></div></div>
+        <div class="tile"><h4>Управление доступом</h4><p>Просмотр подписок, копирование ссылок, продление срока и отзыв доступа.</p></div>
+      </div>
+    </section>
+    <footer class="footer">RH VPN · Private administration</footer>
+  </main>
+</body>
+</html>
